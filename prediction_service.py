@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import pandas as pd
+from prometheus_fastapi_instrumentator import Instrumentator
 
 # Load model & encoders
 model = joblib.load("model.pkl")
@@ -10,6 +11,7 @@ le_origin = joblib.load("le_origin.pkl")
 le_dest = joblib.load("le_dest.pkl")
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
 
 class FlightData(BaseModel):
     carrier: str
