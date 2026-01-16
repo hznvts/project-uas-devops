@@ -5,12 +5,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy file frontend dan dataset (untuk dropdown)
 COPY flights.csv .
 COPY frontend_app.py .
 
-# Expose port Streamlit
 EXPOSE 8501
 
-# Jalankan Streamlit
 CMD ["streamlit", "run", "frontend_app.py", "--server.port=8501", "--server.address=0.0.0.0"]

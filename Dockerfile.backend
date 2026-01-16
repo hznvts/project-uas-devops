@@ -1,22 +1,16 @@
-# Gunakan base image Python yang ringan
 FROM python:3.9-slim
 
 WORKDIR /app
 
-# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy file yang diperlukan untuk training & backend
 COPY flights.csv .
 COPY train_model.py .
 COPY prediction_service.py .
 
-# PENTING: Jalankan training saat build image agar file model.pkl, le_carrier.pkl, dll tersedia
 RUN python train_model.py
 
-# Expose port FastAPI
 EXPOSE 8000
 
-# Jalankan server
 CMD ["uvicorn", "prediction_service:app", "--host", "0.0.0.0", "--port", "8000"]

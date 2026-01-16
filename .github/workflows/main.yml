@@ -27,7 +27,6 @@ jobs:
         context: .
         file: Dockerfile.backend
         push: true
-        # Ganti format nama image jadi: username/image:tag
         tags: ${{ secrets.DOCKER_USERNAME }}/flight-backend:latest
 
     # 4. Build & Push Frontend

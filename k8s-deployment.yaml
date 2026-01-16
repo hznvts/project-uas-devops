@@ -21,13 +21,12 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
-        # === TAMBAHKAN BAGIAN INI ===
         resources:
           requests:
-            cpu: "100m"  # Meminta jatah 0.1 CPU (100 millicores)
+            cpu: "100m"
             memory: "128Mi"
           limits:
-            cpu: "500m"  # Maksimal boleh pakai 0.5 CPU
+            cpu: "500m"
             memory: "512Mi"
 ---
 # ===========================
@@ -36,15 +35,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service # <--- Ini akan jadi DNS name untuk backend
+  name: backend-service
 spec:
   selector:
     app: flight-backend
   ports:
     - protocol: TCP
-      port: 8000        # Port yang dibuka di dalam cluster
-      targetPort: 8000  # Port container
-  type: ClusterIP       # Hanya bisa diakses dari dalam cluster
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP
 
 ---
 # ===========================
@@ -71,7 +70,6 @@ spec:
         ports:
         - containerPort: 8501
         env:
-        # Menghubungkan variabel API_URL di Python ke Service Kubernetes
         - name: API_URL
           value: "http://backend-service:8000/predict"
 ---
@@ -89,4 +87,4 @@ spec:
     - protocol: TCP
       port: 8501
       targetPort: 8501
-  type: LoadBalancer # Agar bisa diakses dari browser host
+  type: LoadBalancer

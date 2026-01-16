@@ -6,3 +6,4 @@ streamlit
 requests
 joblib
 pydantic
+prometheus-fastapi-instrumentator
