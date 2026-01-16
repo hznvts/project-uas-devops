@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - name: backend
-        image: flight-backend:v1
-        imagePullPolicy: IfNotPresent
+        image: stevenchangg/flight-backend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         # === TAMBAHKAN BAGIAN INI ===
@@ -66,8 +66,8 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: flight-frontend:v1
-        imagePullPolicy: IfNotPresent
+        image: stevenchangg/flight-frontend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8501
         env:
