@@ -15,7 +15,7 @@ df = pd.read_csv("flights.csv")
 df = df[['OP_CARRIER','ORIGIN','DEST']].dropna()
 
 # ===== Streamlit UI =====
-st.title("✈️ Flight Delay Prediction (Microservice)")
+st.title("✈️ [Update v2.0] Flight Delay Prediction (Microservice)")
 
 carrier = st.selectbox("Select Carrier", sorted(df['OP_CARRIER'].unique()))
 origin = st.selectbox("Select Origin Airport", sorted(df['ORIGIN'].unique()))

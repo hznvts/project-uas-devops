@@ -6,7 +6,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: flight-backend # Harus sama dengan nama deployment backend
+    name: flight-backend
   minReplicas: 1
   maxReplicas: 5         # Maksimal duplikasi sampai 5 container
   metrics:
